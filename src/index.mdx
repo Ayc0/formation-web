@@ -91,6 +91,10 @@ import Chrono from "./Chrono";
 
 ![python](./images/python-2-3.png)
 
+```notes
+Les dates ne servent qu'à dire que python 2 c'est nul
+```
+
 ---
 
 # Ok, le python c'est bien beau mais c'est quoi le rapport avec le JavaScript ?
@@ -109,4 +113,60 @@ import Chrono from "./Chrono";
 
 # JavaScript n'est pas versionné
 
-Les sites des années 7 doivent encore marcher maintenant.
+- À la place de faire des versions de JavaScript, des spéfications de fonctionnalités sont ajoutées,
+- Ces fonctionnalités passent par plusieurs phases d'acceptation ([détails ici](https://tc39.github.io/process-document/)),
+- Le commité [TC39](https://github.com/tc39/proposals) délibère chaque année sur toutes ces propositions,
+- Les plateformes (navigateurs, NodeJS, etc.) implémentent les fonctionnalités qu'ils veulent en respectant (ou non) les specs.
+
+(c'est aussi vrai pour le CSS)
+
+```notes
+HTML 5 et CSS 3
+
+Pas de CSS 4
+
+Parler de ES5-6-7-8
+```
+
+---
+
+<div>
+  <h1 style={{ fontSize: "10em" }}>
+    <span style={{ fontSize: "2rem", lineHeight: "2rem" }}>Comment je sais ce que je peux utiliser ?</span>
+    <br />
+    😱
+  </h1>
+</div>
+
+---
+
+# Comment remédier à ça ?
+
+- Savoir quelles fonctionnalités on peut utiliser en fonction des cibles
+- Créer des librairies qui permettent d'injecter des fonctionnalités non existantes (ou des les ajouter si elles n'existent pas) <br/>
+  `from __future__ import division`
+- Transpiler son code pour le rendre compatible <br/>
+  `f"Bonjour {name}"` -> `"Bonjour{name}".format(name=name)`
+
+```notes
+Démo de division dans python 2 et 3
+```
+
+---
+
+# Solutions
+
+- [caniuse.com](https://caniuse.com/) (et [kangax](http://kangax.github.io/)) <br/>
+  (Pour la compatibilité)
+
+- Utiliser des [polyfills ou des ponyfills](https://kikobeats.com/polyfill-ponyfill-and-prollyfill/) <br/>
+  (Pour l'injection automatique de fonctionnalités)
+
+- [Babel](https://babeljs.io/) <br/>
+  (Pour transpiler du code "récent" en code "vieux")
+
+- Pour certaines features, on ne peut rien faire (ex : Symbol)
+
+```notes
+Petite démo Babel
+```
