@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "mdx-deck src/index.mdx"
+    "start": "mdx-deck src/index.mdx",
+    "build": "mdx-deck build src/index.mdx"
   },
   "devDependencies": {
     "eslint": "^5.8.0",
