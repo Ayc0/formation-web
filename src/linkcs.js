@@ -1,17 +1,23 @@
 import React from "react";
 import { Appear } from "mdx-deck";
 
+const imgStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  maxHeight: "100%",
+  maxWidth: "100%",
+  transform: "translate(-50%, -50%)"
+};
+
 const LinkCS = ({ step }) => {
   const Wrapper = step ? Appear : React.Fragment;
 
   return (
     <div style={{ height: "90vh", position: "relative" }}>
-      <img src="./images/linkcs.png" alt="linkcs" style={{ maxHeight: "100%", maxWidth: "100%" }} />
+      <img src="./images/linkcs.png" alt="linkcs" style={imgStyle} />
       <div>
-        <svg
-          viewBox="0 0 1190 1310"
-          style={{ position: "absolute", top: 0, left: 0, maxHeight: "100%", maxWidth: "100%" }}
-        >
+        <svg viewBox="0 0 1190 1310" style={imgStyle}>
           <defs>
             <style>
               {`
