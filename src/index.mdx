@@ -1,7 +1,9 @@
 import { Appear } from "mdx-deck";
 import { Split, SplitRight } from "mdx-deck/layouts";
 
-export { default as theme } from "./theme";
+import theme from "./theme";
+
+export { theme };
 
 import LinkCS from "./linkcs";
 
@@ -50,5 +52,22 @@ export default Split;
 </div>
 
 ...
-
 ```
+
+---
+
+import Chrono from "./Chrono";
+
+## Qu'est-ce que le Javascript dans tout ça ?
+
+<Appear>
+  <div>
+    <p style={{ fontSize: theme.fontSizes[2] }}>
+      Le JavaScript est un langage de programmation qui est exécuté dans le navigateur et qui permet de rendre dynamique
+      vos sites.
+    </p>
+  </div>
+  <Chrono />
+</Appear>
+
+---
