@@ -89,7 +89,7 @@ import Chrono from "./Chrono";
 
 # Python 2 VS Python 3
 
-![python](./images/python-2-3.png)
+![python](./static/images/python-2-3.png)
 
 ```notes
 Les dates ne servent qu'à dire que python 2 c'est nul
@@ -170,3 +170,45 @@ Démo de division dans python 2 et 3
 ```notes
 Petite démo Babel
 ```
+
+---
+
+import { CodeSurfer } from "mdx-deck-code-surfer";
+
+<CodeSurfer
+  title="On n'avez pas parlé de React ?"
+  code={require("!raw-loader!./static/html/first-app.html")}
+  lang="html"
+  showNumbers={true}
+  steps={[
+    { range: [5, 6], notes: "Inject React dependencies" },
+    { lines: [7], notes: "Load babel for <script type='text/babel'>" },
+    { lines: [10, 38], notes: "Balise qui sera écrasée lorsque React sera loadé" },
+    { lines: [12, 39], notes: "Block de code transpilé par Babel puis exécuté par le navigateur" },
+    { lines: [20], range: [13, 16], notes: "On définit un composant React" },
+    { range: [26, 33], notes: "La méthode render correspond à ce que le composant va afficher" },
+    {
+      tokens: { 29: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
+      range: [22, 24],
+      notes: "Lorsqu'on vient changer le contenu de l'input, la fonction handleChange est appelée"
+    },
+    {
+      ranges: [[22, 24], [17, 19]],
+      notes: "lorsque setState est appelé, this.state (initialisé au constructor) est modifié"
+    },
+    {
+      tokens: { 29: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27] },
+      lines: [26, 30],
+      notes: "La méthode render est appelée de nouveau et la valeur du state est injecté dans l'HTML"
+    }
+  ]}
+/>
+
+---
+
+# Résultat
+
+<iframe
+  style={{ border: "none" }}
+  src={`data:text/html;charset=utf-8,${require("!raw-loader!./static/html/first-app.html")}`}
+/>

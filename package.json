@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "mdx-deck src/index.mdx",
-    "build": "mdx-deck build src/index.mdx && cp -r src/images dist/images"
+    "build": "mdx-deck build src/index.mdx && cp -r src/static/images dist/static/images"
   },
   "devDependencies": {
     "eslint": "^5.8.0",
@@ -12,9 +12,11 @@
     "eslint-plugin-react": "^7.11.1",
     "mdx-deck": "^1.7.7",
     "nodemon": "^1.18.6",
-    "prettier": "^1.15.1"
+    "prettier": "^1.15.1",
+    "raw-loader": "^0.5.1"
   },
   "dependencies": {
+    "mdx-deck-code-surfer": "^0.5.3",
     "react": "^16.6.1"
   }
 }
