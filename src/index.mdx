@@ -212,3 +212,122 @@ import { CodeSurfer } from "mdx-deck-code-surfer";
   style={{ border: "none" }}
   src={`data:text/html;charset=utf-8,${require("!raw-loader!./static/html/first-app.html")}`}
 />
+
+---
+
+<CodeSurfer
+  title="Okay, on va dire que je te suis. Mais c'est quoi ces < > dans ton render ?"
+  code={require("!raw-loader!./static/html/first-app.html")
+    .split("\n")
+    .filter((_, i) => i >= 25 && i < 33)
+    .join("\n")}
+/>
+
+---
+
+# JSX
+
+Ce n'est pas de l'html, c'est du JSX
+
+```jsx
+const App = (
+  <Element prop1={value1} props2={value2}>
+    <Child1 />
+    <Child2 />
+  </Element>
+);
+```
+
+Sucre syntaxique pour (converti par Babel) :
+
+```jsx
+const App = React.createElement(
+  Element,
+  { prop1: value1, props2: value2 },
+  React.createElement(Child1, null),
+  React.createElement(Child2, null)
+);
+```
+
+---
+
+# Règles éléments React
+
+Tout élément a une racine unique, si jamais vous voulez afficher plusieurs éléments JSX sans parent, utilisez `<React.Fragment>`
+
+Don't
+
+```jsx
+const App = (
+  <h1>title</h1>
+  <h2>sub title</h2>
+);
+```
+
+Do
+
+```jsx
+const App = (
+  <React.Fragment>
+    <h1>title</h1>
+    <h2>sub title</h2>
+  </React.Fragment>
+);
+```
+
+---
+
+# Règles éléments React
+
+On utilise `{espression js}` pour injecter du code JS
+
+Vous pouvez injecter des variables :
+
+```jsx
+const name = "World";
+
+const App = <label>{name}</label>;
+```
+
+Ou n'importe quelle expression valide en JS :
+
+```jsx
+const condition = Math.random() > 0.5;
+
+const App = <p style={{ visibility: condition ? "visible" : "hidden" }}>You {condition ? "can" : "can't"} see me</p>;
+```
+
+---
+
+# Règles éléments React
+
+Si vous voulez afficher une liste d'éléments JSX, il faut que vous leur donniez un attribut `key` qui permet de les traquer
+
+```jsx
+const characters = [
+  {
+    id: 0,
+    name: "Tintin"
+  },
+  {
+    id: 1,
+    name: "Capitaine Haddock"
+  },
+  {
+    id: 2,
+    name: "Professeur Tournesol"
+  },
+  {
+    id: 3,
+    name: "Dupont"
+  },
+  {
+    id: 4,
+    name: "Dupond"
+  }
+];
+
+const listOfCharacters = characters.map(character => <li key={character.id}>{character.name}</li>);
+
+const App = <ul>{listOfCharacters}</ul>;
+```
