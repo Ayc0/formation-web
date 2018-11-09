@@ -15,7 +15,7 @@ const LinkCS = ({ step }) => {
 
   return (
     <div style={{ height: "90vh", position: "relative" }}>
-      <img src="./images/linkcs.png" alt="linkcs" style={imgStyle} />
+      <img src="./static/images/linkcs.png" alt="linkcs" style={imgStyle} />
       <div>
         <svg viewBox="0 0 1190 1310" style={imgStyle}>
           <defs>
