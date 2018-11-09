@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "mdx-deck src/index.mdx",
-    "build": "mdx-deck build src/index.mdx && cp -r src/static/images dist/static/images"
+    "build": "mdx-deck build src/index.mdx && cp -r src/static dist/static"
   },
   "devDependencies": {
     "eslint": "^5.8.0",
