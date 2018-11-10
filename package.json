@@ -4,6 +4,11 @@
     "start": "mdx-deck src/index.mdx",
     "build": "mdx-deck build src/index.mdx && cp -r src/static dist/static"
   },
+  "dependencies": {
+    "@ayc0/mdx-deck": "^0.1.0",
+    "mdx-deck-code-surfer": "^0.5.3",
+    "react": "16.7.0-alpha.0"
+  },
   "devDependencies": {
     "eslint": "^5.8.0",
     "eslint-config-prettier": "^3.1.0",
@@ -14,9 +19,8 @@
     "prettier": "^1.15.1",
     "raw-loader": "^0.5.1"
   },
-  "dependencies": {
-    "@ayc0/mdx-deck": "^0.1.0",
-    "mdx-deck-code-surfer": "^0.5.3",
-    "react": "^16.6.1"
+  "resolutions": {
+    "react": "16.7.0-alpha.0",
+    "react-dom": "16.7.0-alpha.0"
   }
 }

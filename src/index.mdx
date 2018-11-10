@@ -1,5 +1,6 @@
 import { Appear } from "mdx-deck";
 import { Split, SplitRight } from "mdx-deck/layouts";
+import { CodeSurfer } from "mdx-deck-code-surfer";
 
 import theme from "./theme";
 
@@ -173,11 +174,9 @@ Petite démo Babel
 
 ---
 
-import { CodeSurfer } from "mdx-deck-code-surfer";
-
 <CodeSurfer
   title="On n'avait pas parlé de React ?"
-  code={require("!raw-loader!./static/html/first-app.html")}
+  code={require("!!raw-loader!./static/html/first-app.html")}
   lang="html"
   showNumbers={true}
   steps={[
@@ -210,14 +209,14 @@ import { CodeSurfer } from "mdx-deck-code-surfer";
 
 <iframe
   style={{ border: "none" }}
-  src={`data:text/html;charset=utf-8,${require("!raw-loader!./static/html/first-app.html")}`}
+  src={`data:text/html;charset=utf-8,${require("!!raw-loader!./static/html/first-app.html")}`}
 />
 
 ---
 
 <CodeSurfer
   title="Okay, on va dire que je te suis. Mais c'est quoi ces < > dans ton render ?"
-  code={require("!raw-loader!./static/html/first-app.html")
+  code={require("!!raw-loader!./static/html/first-app.html")
     .split("\n")
     .filter((_, i) => i >= 25 && i < 33)
     .join("\n")}
@@ -248,6 +247,8 @@ const App = React.createElement(
   React.createElement(Child2, null)
 );
 ```
+
+Notes : il faut que React soit importé pour que le composant fonctionne car Babel réécrit votre fichier avec `React.createElement`
 
 ---
 
@@ -331,3 +332,33 @@ const listOfCharacters = characters.map(character => <li key={character.id}>{cha
 
 const App = <ul>{listOfCharacters}</ul>;
 ```
+
+---
+
+import LifeCycle from "./LifeCycle";
+
+# Comment définir un composant React
+
+```jsx
+class MyComponent extends React.Component {
+  render() {
+    return <div>Ceci est le minimum requis pour créer un composant</div>;
+  }
+}
+```
+
+---
+
+<CodeSurfer
+  title="Il est possiblde de rajouter des méthodes qui font être exécutées à des moments différents"
+  code={require("!raw-loader!./static/js/SimpleComponent.js")
+    .split("\n")
+    .filter((_, i) => i > 1 && i <= 32)
+    .join("\n")}
+/>
+
+---
+
+# Cycle de vie d'un composant
+
+<LifeCycle style={{ maxHeight: "90vh" }} />
