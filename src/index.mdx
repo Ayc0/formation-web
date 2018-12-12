@@ -6,7 +6,7 @@ import theme from "./theme";
 
 export { theme };
 
-import LinkCS from "./linkcs";
+import LinkCS from "./Linkcs";
 
 # Formation Dev Web
 
@@ -180,6 +180,7 @@ Petite démo Babel
   lang="html"
   showNumbers={true}
   steps={[
+    {},
     { range: [5, 6], notes: "Inject React dependencies" },
     { lines: [7], notes: "Load babel for <script type='text/babel'>" },
     { lines: [10, 38], notes: "Balise qui sera écrasée lorsque React sera loadé" },
@@ -350,7 +351,7 @@ class MyComponent extends React.Component {
 ---
 
 <CodeSurfer
-  title="Il est possiblde de rajouter des méthodes qui font être exécutées à des moments différents"
+  title="Il est possible de de rajouter des méthodes qui font être exécutées à des moments différents"
   code={require("!raw-loader!./static/js/SimpleComponent.js")
     .split("\n")
     .filter((_, i) => i > 1 && i <= 32)
