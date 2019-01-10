@@ -283,13 +283,20 @@ class MyComponent extends React.Component {
 
 import LifeCycle from "./LifeCycle";
 
-Toutes les méthodes avec **UNSAFE** ne devraient plus être utilisées car vont être supprimées avec React 17
-
-export default SplitRight;
-
 # Différentes méthodes disponibles
 
-<LifeCycle style={{ maxHeight: "80vh" }} />
+<div style={{ display: "flex", flexDirection: "row" }}>
+  <LifeCycle style={{ maxHeight: "80vh", height: "100%", flex: 2 }} />
+  <div style={{ flex: 1, marginTop: "5em", fontSize: theme.fontSizes[2] }}>
+    <p>
+      Toutes les méthodes avec <b>UNSAFE</b> ne devraient plus être utilisées car vont être supprimées avec React 17.
+    </p>
+    <br />
+    <p>
+      Toutes les méthodes avec <b>STATIC</b> sont des méthodes de classe et pas d'instance.
+    </p>
+  </div>
+</div>
 
 ---
 
