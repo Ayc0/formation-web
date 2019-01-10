@@ -12,6 +12,12 @@ import LinkCS from "./Linkcs";
 
 ---
 
+# Rappels
+
+## HTML CSS JS
+
+---
+
 <LinkCS />
 
 export default SplitRight;
@@ -73,6 +79,12 @@ import Chrono from "./Chrono";
 
 ---
 
+# Versions
+
+## et retrocompatibilité
+
+---
+
 # The new f-strings in Python 3.6
 
 <br />
@@ -88,7 +100,7 @@ import Chrono from "./Chrono";
 
 ---
 
-# Python 2 VS Python 3
+# Gestion des versions de python
 
 ![python](./static/images/python-2-3.png)
 
@@ -143,11 +155,20 @@ Parler de ES5-6-7-8
 
 # Comment remédier à ça ?
 
-- Savoir quelles fonctionnalités on peut utiliser en fonction des cibles
-- Créer des librairies qui permettent d'injecter des fonctionnalités non existantes (ou des les ajouter si elles n'existent pas) <br/>
-  `from __future__ import division`
-- Transpiler son code pour le rendre compatible <br/>
-  `f"Bonjour {name}"` -> `"Bonjour{name}".format(name=name)`
+Savoir quelles fonctionnalités on peut utiliser en fonction des cibles
+
+[caniuse.com](https://caniuse.com/) (et [kangax](http://kangax.github.io/)) <br/>
+(Pour la compatibilité)
+
+---
+
+# Comment remédier à ça ?
+
+Créer des librairies qui permettent d'injecter des fonctionnalités non existantes (ou des les ajouter si elles n'existent pas) <br/>
+`from __future__ import division`
+
+Utiliser des [polyfills ou des ponyfills](https://kikobeats.com/polyfill-ponyfill-and-prollyfill/) <br/>
+(Pour l'injection automatique de fonctionnalités)
 
 ```notes
 Démo de division dans python 2 et 3
@@ -155,17 +176,13 @@ Démo de division dans python 2 et 3
 
 ---
 
-# Solutions
+# Comment remédier à ça ?
 
-- [caniuse.com](https://caniuse.com/) (et [kangax](http://kangax.github.io/)) <br/>
-  (Pour la compatibilité)
-
-- Utiliser des [polyfills ou des ponyfills](https://kikobeats.com/polyfill-ponyfill-and-prollyfill/) <br/>
-  (Pour l'injection automatique de fonctionnalités)
+Transpiler son code pour le rendre compatible <br/>
+`f"Bonjour {name}"` -> `"Bonjour{name}".format(name=name)`
 
 - [Babel](https://babeljs.io/) <br/>
   (Pour transpiler du code "récent" en code "vieux")
-
 - Pour certaines features, on ne peut rien faire (ex : Symbol)
 
 ```notes
@@ -174,8 +191,12 @@ Petite démo Babel
 
 ---
 
+# On ne devait pas parler de React ?
+
+---
+
 <CodeSurfer
-  title="On n'avait pas parlé de React ?"
+  title=" "
   code={require("!!raw-loader!./static/html/first-app.html")}
   lang="html"
   // showNumbers={true}
