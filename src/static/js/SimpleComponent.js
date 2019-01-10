@@ -8,6 +8,7 @@ class MyComponent extends React.Component {
 
     this.state = { counter: 0 };
   }
+  
   componentDidMount() {
     console.log("did mount");
   }

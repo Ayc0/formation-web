@@ -178,11 +178,11 @@ Petite démo Babel
   title="On n'avait pas parlé de React ?"
   code={require("!!raw-loader!./static/html/first-app.html")}
   lang="html"
-  showNumbers={true}
+  // showNumbers={true}
   steps={[
-    {},
-    { range: [5, 6], notes: "Inject React dependencies" },
-    { lines: [7], notes: "Load babel for <script type='text/babel'>" },
+    { notes: "Ceci est un code valable et marche directement dans votre navigateur préféré" },
+    { range: [5, 6], notes: "Injection de React" },
+    { lines: [7], notes: "Load babel pour <script type='text/babel'>" },
     { lines: [10, 38], notes: "Balise qui sera écrasée lorsque React sera loadé" },
     { lines: [12, 39], notes: "Block de code transpilé par Babel puis exécuté par le navigateur" },
     { lines: [20], range: [13, 16], notes: "On définit un composant React" },
@@ -212,6 +212,63 @@ Petite démo Babel
   style={{ border: "none" }}
   src={`data:text/html;charset=utf-8,${require("!!raw-loader!./static/html/first-app.html")}`}
 />
+
+---
+
+# Comment définir un composant React
+
+```jsx
+class MyComponent extends React.Component {
+  render() {
+    return <div>Ceci est le minimum requis pour créer un composant</div>;
+  }
+}
+```
+
+---
+
+<CodeSurfer
+  title="Il est possible de de rajouter des méthodes qui font être exécutées à des moments différents"
+  code={require("!raw-loader!./static/js/SimpleComponent.js")
+    .split("\n")
+    .filter((_, i) => i > 1 && i <= 32)
+    .join("\n")}
+  steps={[
+    {},
+    { range: [2, 8], notes: "constructor est appelée lorsque le composant est crée" },
+    { range: [22, 31], notes: "Puis render est appelée pour créer ce qui va être affiché" },
+    {
+      range: [10, 12],
+      notes: "componentDidMount est appelée une fois que le composant a été monté dans le DOM (avec le visuel chargé)"
+    },
+    {
+      range: [22, 31],
+      notes: "render est ré-appelé à chaque fois que le composant doit subir un update"
+    },
+    {
+      range: [14, 16],
+      notes: "et après chaque update puis chaque mise-à-jour du DOM, componentDidUpdate est appelée"
+    },
+    {
+      range: [18, 20],
+      notes:
+        "Losque composant va être retiré du DOM complètement, componentWillUnmount est appelé (utile pour supprimer des listeners)"
+    }
+  ]}
+  showNumbers={true}
+/>
+
+---
+
+import LifeCycle from "./LifeCycle";
+
+Toutes les méthodes avec **UNSAFE** ne devraient plus être utilisées car vont être supprimées avec React 17
+
+export default SplitRight;
+
+# Différentes méthodes disponibles
+
+<LifeCycle style={{ maxHeight: "80vh" }} />
 
 ---
 
@@ -333,33 +390,3 @@ const listOfCharacters = characters.map(character => <li key={character.id}>{cha
 
 const App = <ul>{listOfCharacters}</ul>;
 ```
-
----
-
-import LifeCycle from "./LifeCycle";
-
-# Comment définir un composant React
-
-```jsx
-class MyComponent extends React.Component {
-  render() {
-    return <div>Ceci est le minimum requis pour créer un composant</div>;
-  }
-}
-```
-
----
-
-<CodeSurfer
-  title="Il est possible de de rajouter des méthodes qui font être exécutées à des moments différents"
-  code={require("!raw-loader!./static/js/SimpleComponent.js")
-    .split("\n")
-    .filter((_, i) => i > 1 && i <= 32)
-    .join("\n")}
-/>
-
----
-
-# Cycle de vie d'un composant
-
-<LifeCycle style={{ maxHeight: "90vh" }} />
