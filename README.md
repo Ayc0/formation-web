@@ -4,7 +4,7 @@ TODO:
 - [x] Babel
 - [x] 1st component
 - [x] JSX (and list and fragment and className)
-- [ ] Class component and life-cycle (immutability)
-- [ ] Functional component (hooks)
-- [ ] Passing props to children
+- [x] Class component and life-cycle (immutability)
+- [x] Functional component (hooks)
+- [x] Passing props to children
 - [ ] Webpack / Parcel
