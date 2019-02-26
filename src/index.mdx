@@ -490,7 +490,7 @@ import LifeCycle from "./LifeCycle";
     .filter((_, i) => i > 1 && i <= 24)
     .join("\n")}
   steps={[
-    { note: "Tout le corps de la fonction sauf ce qui est dans useEffect va être appelé" },
+    { notes: "Tout le corps de la fonction sauf ce qui est dans useEffect va être appelé" },
     {
       ranges: [[4, 5], [9, 9]],
       notes: "ce premier useEffect est appelé (équivalent à did mount)"
