@@ -197,9 +197,9 @@ Petite démo Babel
 
 <CodeSurfer
   title=" "
-  code={require("!!raw-loader!./static/html/first-app.html")}
+  code={require("!!raw-loader!./static/html/first-app.html").trim()}
   lang="html"
-  // showNumbers={true}
+  showNumbers
   steps={[
     { notes: "Ceci est un code valable et marche directement dans votre navigateur préféré" },
     { range: [5, 6], notes: "Injection de React" },
@@ -238,6 +238,8 @@ Petite démo Babel
 
 # Comment définir un composant React
 
+Avec une classe
+
 ```jsx
 class MyComponent extends React.Component {
   render() {
@@ -246,57 +248,25 @@ class MyComponent extends React.Component {
 }
 ```
 
----
+Avec une fonction
 
-<CodeSurfer
-  title="Il est possible de de rajouter des méthodes qui font être exécutées à des moments différents"
-  code={require("!raw-loader!./static/js/SimpleComponent.js")
-    .split("\n")
-    .filter((_, i) => i > 1 && i <= 32)
-    .join("\n")}
-  steps={[
-    {},
-    { range: [2, 8], notes: "constructor est appelée lorsque le composant est crée" },
-    { range: [22, 31], notes: "Puis render est appelée pour créer ce qui va être affiché" },
-    {
-      range: [10, 12],
-      notes: "componentDidMount est appelée une fois que le composant a été monté dans le DOM (avec le visuel chargé)"
-    },
-    {
-      range: [22, 31],
-      notes: "render est ré-appelé à chaque fois que le composant doit subir un update"
-    },
-    {
-      range: [14, 16],
-      notes: "et après chaque update puis chaque mise-à-jour du DOM, componentDidUpdate est appelée"
-    },
-    {
-      range: [18, 20],
-      notes:
-        "Losque composant va être retiré du DOM complètement, componentWillUnmount est appelé (utile pour supprimer des listeners)"
-    }
-  ]}
-  showNumbers={true}
-/>
+```jsx
+function MyComponent(props) {
+  return <div>Ceci est le minimum requis pour créer un composant</div>;
+}
+```
+
+Avec une fonction fléchée
+
+```jsx
+const MyComponent = props => <div>Ceci est le minimum requis pour créer un composant</div>;
+```
 
 ---
 
-import LifeCycle from "./LifeCycle";
+## Depuis React 16.8, il n'y a plus aucune différence en terme de possibilités entre un composant classe et un composant fonction.
 
-# Différentes méthodes disponibles
-
-<div style={{ display: "flex", flexDirection: "row" }}>
-  <LifeCycle style={{ maxHeight: "80vh", height: "100%", flex: 2 }} />
-  <div style={{ flex: 1, marginTop: "5em", fontSize: theme.fontSizes[2] }}>
-    <p>
-      Toutes les méthodes avec <b>UNSAFE</b> ne devraient plus être utilisées car vont être supprimées avec React 17.
-    </p>
-    <br />
-    <p>
-      Toutes les méthodes avec <b>STATIC</b> sont des méthodes de classe et pas d'instance.
-    </p>
-  </div>
-</div>
+[Équivalence entre hooks and lifecycle](https://twitter.com/prchdk/status/1056960391543062528?s=09)
 
 ---
 
@@ -418,3 +388,89 @@ const listOfCharacters = characters.map(character => <li key={character.id}>{cha
 
 const App = <ul>{listOfCharacters}</ul>;
 ```
+
+---
+
+# Règles éléments React
+
+- Si un composant retourne `null`, il n'affichera rien
+- Les props et state d'un composant se doivent d'être pures (c.à.d non modifié)
+- React fait la différence entre un élément HTML et un élément React grâce à la casse :
+
+```jsx
+const Li = ({ children, title }) => (
+  <li className="list" title={title}>
+    {children}
+  </li>
+);
+
+// Jamais appelé
+const ul = ({ children }) => <ul class="list-warpper">{children}</ul>;
+
+const App = () => (
+  <div>
+    {/* div HTML */}
+    <ul>
+      {/* ul HTML */}
+      <Li title="a">A</Li> {/* Li défini au dessus */}
+      <Li title="b">B</Li>
+    </ul>
+  </div>
+);
+```
+
+---
+
+# Classes
+
+---
+
+<CodeSurfer
+  title="Il est possible de de rajouter des méthodes qui vont être exécutées à des moments différents"
+  code={require("!raw-loader!./static/js/SimpleComponent.js")
+    .split("\n")
+    .filter((_, i) => i > 1 && i <= 32)
+    .join("\n")}
+  steps={[
+    {},
+    { range: [2, 8], notes: "constructor est appelée lorsque le composant est crée" },
+    { range: [22, 31], notes: "Puis render est appelée pour créer ce qui va être affiché" },
+    {
+      range: [10, 12],
+      notes: "componentDidMount est appelée une fois que le composant a été monté dans le DOM (avec le visuel chargé)"
+    },
+    {
+      range: [22, 31],
+      notes: "render est ré-appelé à chaque fois que le composant doit subir un update"
+    },
+    {
+      range: [14, 16],
+      notes: "et après chaque update puis chaque mise-à-jour du DOM, componentDidUpdate est appelée"
+    },
+    {
+      range: [18, 20],
+      notes:
+        "Losque composant va être retiré du DOM complètement, componentWillUnmount est appelé (utile pour supprimer des listeners)"
+    }
+  ]}
+  showNumbers
+/>
+
+---
+
+import LifeCycle from "./LifeCycle";
+
+# Différentes méthodes disponibles
+
+<div style={{ display: "flex", flexDirection: "row" }}>
+  <LifeCycle style={{ maxHeight: "80vh", height: "100%", flex: 2 }} />
+  <div style={{ flex: 1, marginTop: "5em", fontSize: theme.fontSizes[2] }}>
+    <p>
+      Toutes les méthodes avec <b>UNSAFE</b> ne devraient plus être utilisées car vont être supprimées avec React 17.
+    </p>
+    <br />
+    <p>
+      Toutes les méthodes avec <b>STATIC</b> sont des méthodes de classe et pas d'instance.
+    </p>
+  </div>
+</div>
