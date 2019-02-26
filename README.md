@@ -7,4 +7,4 @@ TODO:
 - [x] Class component and life-cycle (immutability)
 - [x] Functional component (hooks)
 - [x] Passing props to children
-- [ ] Webpack / Parcel
+- [x] Webpack / Parcel

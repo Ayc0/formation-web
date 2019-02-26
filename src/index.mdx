@@ -544,3 +544,31 @@ Défaults :
   code={require("!raw-loader!./static/js/Logic.js").trim()}
   showNumbers
 />
+
+---
+
+# Bundles
+
+---
+
+Depuis le début, on fait tourner notre code dans 1 seul fichier HTML et dans une balise `<script type="text/babel">`, mais comment fait-on pour écrire son code dans plusieurs fichiers différents ?
+
+- [Webpack](https://webpack.js.org/)
+- [Parce](https://parceljs.org/)
+- [Rollup](https://rollupjs.org/)
+
+Tous ces outils vont prendre tout le code écrit et le réunifier en 1 gros fichier (ou plusieurs plus petits en fonction de leur confs).
+
+---
+
+# Et si on a la flemme de réécrire les mêmes lignes de conf pour tous nos projets ?
+
+- [create-react-app](https://facebook.github.io/create-react-app/) : Paramètres assez complets pour gérer une **single-page application** en React
+- [Next](https://nextjs.org/) : **Server-side rendering** très simple en React
+- [Gatsby](https://www.gatsbyjs.org/) : Gestion de **sites statiques** en React avec prérendu des pages en fichiers HTML statiques + hydratation
+
+---
+
+# TP
+
+Écrire avec [create-react-app](https://facebook.github.io/create-react-app/) une To-Do list
