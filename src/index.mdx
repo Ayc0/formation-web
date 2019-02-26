@@ -513,3 +513,26 @@ import LifeCycle from "./LifeCycle";
   ]}
   showNumbers
 />
+
+---
+
+# Difference hooks vs component
+
+[Documentation complète](https://reactjs.org/docs/hooks-overview.html)
+
+Règles des hooks :
+
+- L'ordre d'appel des hooks ont une importance
+- Ne pas définir un hook dans un if
+- Tous les hooks doivent commencés par "use" (même les hooks customs)
+
+Bénéfices des hooks :
+
+- À la place d'avoir un state "global" par composant, il faut définir un `useState` par variable de state
+- useEffect permet d'avoir un contrôle plus précis du cycle de vie du composant en incluant au sein d'une même fonction les équivalents de `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`, `shouldComponentUpdate` et `componentWillUpdate`
+- Meilleure ségmentation de la logique pour les events listeners
+
+Défaults :
+
+- Nouvelle logique => développeurs moins habitués => moins lisible
+- Donne facilement du code moins lisible
