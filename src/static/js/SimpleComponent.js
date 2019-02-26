@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment, Component } from "react";
 
-class MyComponent extends React.Component {
+class MyComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -8,7 +8,7 @@ class MyComponent extends React.Component {
 
     this.state = { counter: 0 };
   }
-  
+
   componentDidMount() {
     console.log("did mount");
   }
@@ -24,11 +24,11 @@ class MyComponent extends React.Component {
   render() {
     console.log("render");
     return (
-      <React.Fragment>
+      <Fragment>
         {this.state.counter}
         <button onClick={() => this.setState(({ counter }) => ({ counter: counter + 1 }))}>-</button>
         <button onClick={() => this.setState(({ counter }) => ({ counter: counter - 1 }))}>+</button>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

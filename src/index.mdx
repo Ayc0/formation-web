@@ -429,7 +429,7 @@ const App = () => (
   title="Il est possible de de rajouter des méthodes qui vont être exécutées à des moments différents"
   code={require("!raw-loader!./static/js/SimpleComponent.js")
     .split("\n")
-    .filter((_, i) => i > 1 && i <= 32)
+    .filter((_, i) => i > 1 && i <= 33)
     .join("\n")}
   steps={[
     {},
@@ -462,6 +462,8 @@ import LifeCycle from "./LifeCycle";
 
 # Différentes méthodes disponibles
 
+[Documentation complète](https://reactjs.org/docs/react-component.html)
+
 <div style={{ display: "flex", flexDirection: "row" }}>
   <LifeCycle style={{ maxHeight: "80vh", height: "100%", flex: 2 }} />
   <div style={{ flex: 1, marginTop: "5em", fontSize: theme.fontSizes[2] }}>
@@ -474,3 +476,40 @@ import LifeCycle from "./LifeCycle";
     </p>
   </div>
 </div>
+
+---
+
+# Hooks
+
+---
+
+<CodeSurfer
+  title="Il est possible de de rajouter des méthodes qui vont être exécutées à des moments différents"
+  code={require("!raw-loader!./static/js/SimpleHook.js")
+    .split("\n")
+    .filter((_, i) => i > 1 && i <= 26)
+    .join("\n")}
+  steps={[
+    { note: "Tout le corps de la fonction sauf ce qui est dans useEffect va être appelé" },
+    {
+      ranges: [[4, 5], [9, 9]],
+      notes: "ce premier useEffect est appelé (équivalent à did mount)"
+    },
+    {
+      range: [11, 13],
+      notes: "puis ce deuxième useEffect est appelé (aussi un did mount)"
+    },
+    {
+      notes: "et après chaque update toute la fonction sauf ce qui est dans useEffect va être reappelée"
+    },
+    {
+      range: [11, 13],
+      notes: "puis le deuxième useEffect est appelé (équivelent did update)"
+    },
+    {
+      range: [6, 8],
+      notes: "enfin, le callback du premier useEffect est appelé (équivalent will unmount)"
+    }
+  ]}
+  showNumbers
+/>
