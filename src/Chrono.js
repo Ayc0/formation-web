@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 
 export default class Chrono extends Component {
   constructor(props) {

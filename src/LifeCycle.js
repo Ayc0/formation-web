@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default ({ style }) => {
+const Lifecycle = ({ style }) => {
   const [selected, setSeletected] = useState("newProps");
 
   const onClick = value => event => {
@@ -443,3 +443,5 @@ export default ({ style }) => {
     </svg>
   );
 };
+
+export default Lifecycle;
