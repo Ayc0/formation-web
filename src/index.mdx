@@ -588,6 +588,9 @@ Défaults :
 
 En react, pour avoir accès au DOM, on utilise les `ref`.
 
+Le but des refs n'est pas de modifier le DOM, mais d'appeler des méthodes sur les éléments HTML. <br/>
+Il ne faut pas utiliser les refs pour modifier directement l'html car ces changements ne seront pas gardés aux prochains render et aussi parce que cela cause une désynchonisation entre le DOM et ce que React connait du DOM.
+
 ---
 
 <CodeSurfer title="Manipuler le DOM" code={require("!raw-loader!./static/js/Ref.js").trim()} />
