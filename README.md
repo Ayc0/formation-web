@@ -10,6 +10,6 @@ TODO:
 - [x] Functional component (hooks)
 - [x] Passing props to children
 - [x] Ref
-- [ ] Context
+- [x] Context
 - [x] Webpack / Parcel
 - [x] ToDo
