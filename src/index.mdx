@@ -436,6 +436,26 @@ const App = () => (
 
 ---
 
+# Immutabilité
+
+❗️Les state et props sont immutables ❗️
+
+```jsx
+this.state.list.push(element); // Don't ❌
+this.setState(({ list }) => ({ list: list.push(element) })); // Don't ❌
+this.setState(({ list }) => ({ list: [...list, element] })); // Do ✅
+```
+
+Pourquoi ?
+
+- React ne détecte pas de changement donc ne va pas se re-render
+- S'il se rerender quand même, on a changé la précédente valeur des props ou du state et donc on ne peut plus les comparer proprement
+- La mutation peut se faire écraser par un setState prochain
+
+En général en React, tout est immutable (sauf les attributs customs).
+
+---
+
 # Classes
 
 ---
